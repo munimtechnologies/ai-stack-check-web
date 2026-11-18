@@ -1,0 +1,17 @@
+/* AI Stack Check: assistant section. Copyright 2026 Munim, Inc. Apache-2.0. Made by MV2 of Munim, Inc. with AI agents. */
+.assistant {
+  margin-top: 2rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid #c7d2fe;
+  border-radius: 10px;
+  background: #f8faff;
+}
+.assistant h2 { margin-top: 0; color: #1d4ed8; }
+.assistant-note { font-size: 0.9rem; color: #374151; }
+#assistant-status { font-size: 0.9rem; color: #1e3a8a; min-height: 1.2em; }
+.assistant-panels { display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 1rem; }
+@media (max-width: 760px) { .assistant-panels { grid-template-columns: 1fr; } }
+#agent-app { margin-top: 0.75rem; }
+#agent-app button { background: #1d4ed8; color: #fff; border: 0; border-radius: 6px; padding: 0.4rem 0.8rem; cursor: pointer; }
+#agent-app textarea, #agent-app input[type=text], #agent-app input[type=password] { width: 100%; box-sizing: border-box; }
+dialog.assistant-review { max-width: 32rem; border: 1px solid #c7d2fe; border-radius: 10px; }

@@ -1,0 +1,68 @@
+{
+  "brand": "AI Stack Check Assistant",
+  "networks": [
+    {
+      "name": "ai_stack_check",
+      "front_man": "stack_check_assistant",
+      "hocon": "./ai_stack_check.network.json",
+      "description": "Explains what AI Stack Check found in your self-hosted AI stack and helps you fix it. It sees only findings and the redacted file, never your secrets.",
+      "tags": ["agentified-website", "security", "self-hosted-ai"],
+      "sample_queries": [
+        "Load the sample stack and tell me what to fix first.",
+        "Is Open WebUI 0.11.2 affected by any known advisories?",
+        "Write me a corrected compose file and check that it passes.",
+        "Can you scan my server at 203.0.113.7 from here?"
+      ]
+    }
+  ],
+  "llm_router": {
+    "base_url": "https://api.otari.ai/api/v1",
+    "mock": false,
+    "byok_router": "https://api.otari.ai/api/v1"
+  },
+  "allowed_peers": [],
+  "peer_policy": {
+    "mode": "closed",
+    "deny_origins": [],
+    "note": "Local agents and page-local actions only."
+  },
+  "agent_mcp": {
+    "protocol": "ai-stack-check-agent-mcp/v1",
+    "network": "ai_stack_check",
+    "front_man": "stack_check_assistant",
+    "available": false,
+    "reason": "This is a static bundle; a public MCP facade requires an application host."
+  },
+  "theme": {
+    "primary": "#1d4ed8"
+  },
+  "linking": {
+    "protocol": "ai-stack-check-link/v1",
+    "exports": [
+      {
+        "network": "ai_stack_check",
+        "front_man": "stack_check_assistant",
+        "aliases": ["ai_stack_check", "stack_check_assistant"],
+        "url": "ai_stack_check"
+      }
+    ],
+    "imports": [],
+    "link_updates": {
+      "mode": "browser-local"
+    }
+  },
+  "deployment": {
+    "mode": "static",
+    "self_contained_runtime": true,
+    "browser_mock": false,
+    "direct_byok": true,
+    "direct_mcp_requires_cors": true,
+    "public_mcp_facade": false
+  },
+  "actions": {
+    "version": 1,
+    "module": "./web/site-actions.js",
+    "bridge": "./bridge/action-bridge.html",
+    "agentTools": ["get_findings", "check_pasted_file", "load_sample_stack", "get_redacted_file", "check_component", "verify_fix"]
+  }
+}

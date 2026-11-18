@@ -1,0 +1,17 @@
+{
+  "name": "ai-stack-check-web",
+  "version": "0.2.0",
+  "description": "Check a self-hosted AI stack (Ollama, Open WebUI, vLLM, LiteLLM, n8n, Dify and more) in the browser: known advisories, exposed APIs and secrets. An open agentic website: an in-browser assistant (bring your own model, or your local Ollama) explains the findings and verifies its fixes with the same rules.",
+  "private": true,
+  "license": "Apache-2.0",
+  "author": "MV2 of Munim, Inc. <mv2@munimtech.com> (made with AI agents)",
+  "type": "commonjs",
+  "scripts": {
+    "test": "node --test test/*.test.js test/*.test.mjs",
+    "serve": "python3 -m http.server 8080"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/munimtechnologies/ai-stack-check-web"
+  }
+}
